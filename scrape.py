@@ -64,6 +64,7 @@ def hello():
             input_text = request.form.get("text")
 
             test(input_text)
+            scrape(input_text)
 
         elif request.form['submit'] == 'Clear':
             input_text = ''
@@ -72,16 +73,15 @@ def hello():
     return render_template('form.html', textarea=input_text)
 
 @app.route('/test',methods=['GET', 'POST'])
-def test():
-    url = request.args.get("url")
+def test(url):
     result = scrape_products(url)
     data = json.dumps(result, sort_keys = True, indent = 4)
 #    data = json.dumps(results)
-    return data
+    flash(data)
 
-@app.route('/scrape')
-def scrape_url(url):
-    url = request.args.get(url)
+@app.route('/scrape',methods=['GET', 'POST'])
+def scrape_url():
+    url = request.args.get("url")
     try:
         results = scrape_products(url)
     except ValueError as e:

@@ -3,8 +3,8 @@
 The scrape.py first scrapes proxies from the web
 
 
-![Running flask](/img/realtime1.png)
+![Running flask](static/img/realtime1.png)
 
-![Output](/img/realtime2.png)
+![Output](static/img/realtime2.png)
 
-![Using Curl](/img/realtime3.png)
+![Using Curl](static/img/realtime3.png)
